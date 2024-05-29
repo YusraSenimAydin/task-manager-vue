@@ -1,12 +1,7 @@
 <template>
   <ul>
-    <TaskItem
-      v-for="task in tasks"
-      :key="task.id"
-      :task="task"
-      @delete-task="handleDelete"
-      @edit-task="handleEdit"
-    />
+    <TaskItem v-for="task in tasks" :key="task.id" :task="task" @delete-task="handleDelete" @edit-task="handleEdit"
+      @toggle-completion="toggleCompletion" />
   </ul>
 </template>
 
@@ -28,6 +23,9 @@ export default defineComponent({
     },
     handleEdit(task) {
       this.$emit('edit-task', task);
+    },
+    toggleCompletion(task) {
+      this.$emit('toggle-completion', task);
     },
   },
 });

@@ -8,6 +8,10 @@
       </p>
     </div>
     <div class="flex space-x-2">
+      <button @click="toggleCompletion" class="cursor-pointer px-2 py-1 rounded text-white"
+        :class="task.completed ? 'bg-red-500' : 'bg-green-500'">
+        {{ task.completed ? 'Incomplete' : 'Complete' }}
+      </button>
       <EditOutlined @click="editTask" class="cursor-pointer" />
       <DeleteFilled @click="handleDelete" class="cursor-pointer text-red-500" />
     </div>
@@ -43,6 +47,9 @@ export default defineComponent({
     },
     editTask() {
       this.$emit('edit-task', this.task);
+    },
+    toggleCompletion() {
+      this.$emit('toggle-completion', this.task);
     },
   },
 });

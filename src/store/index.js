@@ -81,7 +81,21 @@ export default createStore({
         console.error("Failed to delete task:", error);
       }
     },
-  
+    async updateTask({ commit }, task) {
+      try {
+        const response = await fetch(`http://localhost:3000/tasks/${task.id}`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(task),
+        });
+        const updatedTask = await response.json();
+        commit("updateTask", updatedTask);
+      } catch (error) {
+        console.error("Failed to update task:", error);
+      }
+    },
   },
   modules: {},
 });
