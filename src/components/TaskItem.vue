@@ -3,15 +3,18 @@
     <div>
       <h2 class="text-lg font-bold">{{ task.title }}</h2>
       <p>{{ shortenedDescription }}</p>
-      <p :class="task.completed ? 'text-green-500' : 'text-red-500'">
+      <p :class="task.completed ? 'text-green-700' : 'text-red-500'">
         {{ task.completed ? 'Completed' : 'Incomplete' }}
       </p>
     </div>
-    <div class="flex space-x-2">
-      <button @click="toggleCompletion" class="cursor-pointer px-2 py-1 rounded text-white"
-        :class="task.completed ? 'bg-red-500' : 'bg-green-500'">
-        {{ task.completed ? 'Incomplete' : 'Complete' }}
-      </button>
+    <div class="flex space-x-2 items-center">
+      <a-switch
+        :checked="task.completed"
+        @change="toggleCompletion"
+        :checked-children="'Completed'"
+        :un-checked-children="'Incomplete'"
+        :default-checked="task.completed"
+      />
       <EditOutlined @click="editTask" class="cursor-pointer" />
       <DeleteFilled @click="handleDelete" class="cursor-pointer text-red-500" />
     </div>
@@ -21,11 +24,13 @@
 <script>
 import { defineComponent } from 'vue';
 import { EditOutlined, DeleteFilled } from '@ant-design/icons-vue';
+import { Switch as ASwitch } from 'ant-design-vue';
 
 export default defineComponent({
   components: {
     EditOutlined,
     DeleteFilled,
+    ASwitch,
   },
   props: {
     task: {

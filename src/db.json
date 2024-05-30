@@ -1,16 +1,10 @@
 {
   "tasks": [
     {
-      "id": "6efa",
-      "title": "yusra",
-      "description": "deneme",
-      "completed": false
-    },
-    {
-      "id": "77c7",
-      "title": "dasdddd",
-      "description": "dasdad",
-      "completed": false
+      "id": "562b",
+      "title": "task 1 title",
+      "description": "task 1 desc for vue",
+      "completed": true
     }
   ]
 }

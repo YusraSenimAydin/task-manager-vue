@@ -2,32 +2,7 @@ import { createStore } from "vuex";
 
 export default createStore({
   state: {
-    tasks: [
-      {
-        id: "1",
-        title: "Task 1",
-        description: "task1 description",
-        completed: false,
-      },
-      {
-        id: "2",
-        title: "Task 2",
-        description: "task2 description",
-        completed: false,
-      },
-      {
-        id: "3",
-        title: "Task 3",
-        description: "task3 description",
-        completed: false,
-      },
-      {
-        id: "4",
-        title: "Task 4",
-        description: "task4 description",
-        completed: false,
-      },
-    ],
+    tasks: [ ],
   },
   mutations: {
     setTasks(state, tasks) {
@@ -51,6 +26,7 @@ export default createStore({
       try {
         const response = await fetch("http://localhost:3000/tasks");
         const tasks = await response.json();
+        console.log('task', tasks)
         commit("setTasks", tasks);
       } catch (error) {
         console.error("Failed to fetch tasks:", error);

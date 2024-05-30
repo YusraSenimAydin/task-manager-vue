@@ -1,7 +1,10 @@
 <template>
   <ul>
-    <TaskItem v-for="task in tasks" :key="task.id" :task="task" @delete-task="handleDelete" @edit-task="handleEdit"
-      @toggle-completion="toggleCompletion" />
+    <TaskItem v-for="task in tasks" :key="task.id" 
+    :task="task" 
+    @delete-task="handleDelete" 
+    @edit-task="handleEdit"
+    @toggle-completion="toggleCompletion" />
   </ul>
 </template>
 
